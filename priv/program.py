@@ -27,10 +27,15 @@ def get_required_features():
   global model
   return model.inputNames
 
-def evaluate(features):
+def evaluate(Features):
+  features = Features.decode('utf8')
+  print("Features: "+ features)
   global model
   deserialized_features = json.loads(features)
-  return model.predict(deserialized_features)['predicted_y']
+  print("Deserialized features: " + str(deserialized_features))
+  res = model.predict(deserialized_features)
+  print("Res: " + str(res))
+  return res['predicted_path_travel_time']
 
 # init("storable_to_pps_queue_model", "1.0.0")
 # print(get_required_features())
