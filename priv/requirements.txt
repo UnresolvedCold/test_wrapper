@@ -1,0 +1,5 @@
+pypmml~=0.9.17
+pandas
+erlport
+requests
+python-dotenv
