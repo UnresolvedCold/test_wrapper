@@ -14,6 +14,8 @@ def init(model_name, model_version):
   model_name = model_name.decode('utf8')
   model_version = model_version.decode('utf8')
   minio_url = os.environ.get("MINIO_URL")
+  print("minio_url: " + minio_url)
+  print("model_name: " + model_name)
   model_url = minio_url +"?modelName="+ model_name + "&modelVersion=" + model_version
   idc_file = downloader.download_file(model_url)
   model = Model.fromFile(idc_file)
