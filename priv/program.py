@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 model = None
 
 def init(model_name, model_version):
+  print("init invoked")
   global model
   load_dotenv()
   model_name = model_name.decode('utf8')
