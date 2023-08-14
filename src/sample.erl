@@ -4,11 +4,11 @@
 
 % Randomly generating input features
 get_features_somehow() ->
-  RandomFloat = fun() -> rand:uniform() * 10 end,
+  RandomFloat = fun() -> rand:uniform() * 100 end,
   #{idc_time => RandomFloat(),
     x_start => RandomFloat(),
-    y_start => RandomFloat(),
     x_goal => RandomFloat(),
+    y_start => RandomFloat(),
     y_goal => RandomFloat()}.
 
 stress_test(NumRuns, NumExcludedRuns) ->
