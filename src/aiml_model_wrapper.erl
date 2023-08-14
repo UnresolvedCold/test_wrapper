@@ -3,6 +3,8 @@
 
 init(ModelName, Version, PythonLocation) ->
   PythonCodePath = code:priv_dir(aiml_model_wrapper),
+  % Res = os:cmd("make -C " ++ PythonCodePath ++ " install"),
+  % io:format("Res: ~p~n", [Res]),
   {ok, P} = python:start_link([{python_path, PythonCodePath}, {python, PythonLocation}]),
   python:call(P, program, init, [list_to_binary(ModelName), list_to_binary(Version)]),
   P.
@@ -15,7 +17,8 @@ get_required_features(P) ->
 
 evaluate(P, Features) ->
   SerializedFeatures = jiffy:encode(Features),
-  python:call(P, program, evaluate, [SerializedFeatures]).
+  Result = python:call(P, program, evaluate, [SerializedFeatures]), 
+  Result.
 
 stop(P) ->
   python:stop(P).
